@@ -60,9 +60,7 @@ class SignUpScreen extends StatelessWidget {
 
               // Name Input Field
               EmailField(
-                  controller: nameController,
-                  icon: Icons.person,
-                  tybe: 'Name'),
+                  controller: nameController, icon: Icons.person, tybe: 'Name'),
               const SizedBox(height: 15),
               // Email Input Field
 
@@ -88,6 +86,7 @@ class SignUpScreen extends StatelessWidget {
                         backgroundColor: Colors.green,
                       ),
                     );
+                    Navigator.pushNamed(context, "/login");
                   } else if (state is AuthFailure) {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
@@ -108,7 +107,12 @@ class SignUpScreen extends StatelessWidget {
                     width: double.infinity,
                     height: 50,
                     child: LogButton(
-                      onPressed: () {Navigator.pushNamed(context, "/login");},
+                      onPressed: () {
+                        context.read<AuthCubit>().signUp(
+                              emailController.text.trim(),
+                              passwordController.text.trim(),
+                            );
+                      },
                       tybe: "Sign Up",
                     ),
                   );

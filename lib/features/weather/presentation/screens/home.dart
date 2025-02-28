@@ -5,6 +5,7 @@ import 'package:weather_app/core/service/location_service.dart';
 import 'package:weather_app/features/weather/presentation/controller/cubit/forecast_cubit.dart';
 import 'package:weather_app/features/weather/presentation/widgets/forecast_body.dart';
 
+// ignore: must_be_immutable
 class ForecastPage extends StatelessWidget {
   ForecastPage({super.key});
 

@@ -28,7 +28,7 @@ class MyListTile extends StatelessWidget {
       leading: Image.network(
         "http:$imagePath",
         width: screenWidth * 0.1,
-        height: screenWidth * 0.1,
+        height: screenWidth * 0.15,
         fit: BoxFit.cover,
       ),
       title: Column(

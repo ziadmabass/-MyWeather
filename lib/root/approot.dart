@@ -4,6 +4,9 @@ import 'package:weather_app/features/auth/presentation/controllers/cubit/auth_cu
 import 'package:weather_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:weather_app/features/auth/presentation/screens/onbording.dart';
 import 'package:weather_app/features/auth/presentation/screens/signup_screen.dart';
+import 'package:weather_app/features/weather/data/repository/ai_repository_impl.dart';
+import 'package:weather_app/features/weather/domain/usecase/predict_tennis_usecase.dart';
+import 'package:weather_app/features/weather/presentation/controller/cubit/ai_cubit.dart';
 import 'package:weather_app/features/weather/presentation/controller/cubit/forecast_cubit.dart';
 import 'package:weather_app/features/weather/presentation/screens/home.dart';
 import 'package:weather_app/injection_container.dart';
@@ -17,7 +20,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (_) => sl<AuthCubit>()),
         BlocProvider(create: (_) => sl<ForecastCubit>()),
-        // BlocProvider(create: (_) => sl<WeatherCubit>()..fetchWeatherData()), // Auto-fetch on startup
+        BlocProvider(create: (_) => sl<AICubit>(),
+        )
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -26,11 +30,8 @@ class MyApp extends StatelessWidget {
           "/login": (context) => LoginScreen(),
           "/signup": (context) => SignUpScreen(),
           "/onboarding": (context) => const OnboardingScreen(),
-          "/sixday": (context) =>  ForecastPage(),
-          // "/weather": (context) => const WeatherScreen(),
-            
+          "/sixday": (context) => ForecastPage(),
         },
-        
       ),
     );
   }
